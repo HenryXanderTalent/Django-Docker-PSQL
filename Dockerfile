@@ -6,8 +6,8 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt ./
 
-RUN pip unistall django
+#RUN pip unistall django
 
-RUN pip istall -r requirements.txt
+RUN pip install -r requirements.txt
 
 

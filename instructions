@@ -3,3 +3,37 @@
 -create requirements.txt
 
 -create docker-compose.yml
+
+docker-compose run django django-admin startproject core .
+
+view all containers in the docker desktop
+
+-change to this in settings.py ALLOWED_HOSTS = ['*']
+
+-go into the docker container
+docker exec -it django bash
+python manage.py migrate
+
+-go into the psql container
+switch to another ternminal
+docker exec -it pgdb psql -U postgres
+\c postgres
+
+-change from sqlite to postgre
+delete sqlite
+
+in settings change to the following:
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'pgdb',
+        'PORT': 5432,
+    }
+
+docker-compose down
+docker-compose up
+
+docker exec -it django bash
+python manage.py migrate
